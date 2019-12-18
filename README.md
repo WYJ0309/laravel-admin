@@ -16,3 +16,6 @@
        Schema::defaultStringLength(191); //只能是191 其它的试了不行
    }
 12 浏览器打开 http://localhost/admin/  用户名admin 密码admin   
+13 新建路由文件参考： 
+   https://www.jianshu.com/p/5f97da29a716
+   https://blog.csdn.net/HZX19941018/article/details/84847180
