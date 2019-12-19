@@ -19,3 +19,7 @@
 13 新建路由文件参考： 
    https://www.jianshu.com/p/5f97da29a716
    https://blog.csdn.net/HZX19941018/article/details/84847180
+14 增加后台认证权限 
+    https://xueyuanjun.com/post/9741.html
+    https://xueyuanjun.com/post/19948   
+    https://www.jianshu.com/p/ee8df298841e

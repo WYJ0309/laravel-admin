@@ -13,10 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
+//Route::any('index','HomeController@index');
+//Route::any('test','HomeController@test')->middleware('test');
 
-Route::group(['prefix' => 'login','middleware'=>'admin_auth'], function() {
-    Route::get('index', 'HomeController@index');
-    Route::get('/infos', function() {
-        return 'your route is ready';
-    });
+Route::group(['middleware'=>'admin_auth'], function() {
+    Route::get('/login/index', 'LoginController@index');
+
 });

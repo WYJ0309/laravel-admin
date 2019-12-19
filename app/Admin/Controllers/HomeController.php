@@ -9,6 +9,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        echo 1;die;
+        echo 'this is Admin/Controllers/HomeController.php 里面的index方法';
+        die;
+    }
+    public function test(){
+        echo 2;die;
     }
 }
