@@ -15,8 +15,8 @@ use Illuminate\Http\Request;
 
 //Route::any('index','HomeController@index');
 //Route::any('test','HomeController@test')->middleware('test');
-
+Route::get('/', 'LoginController@index');
 Route::group(['middleware'=>'admin_auth'], function() {
-    Route::get('/login/index', 'LoginController@index');
+
 
 });
