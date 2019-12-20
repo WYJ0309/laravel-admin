@@ -15,17 +15,12 @@ class AdminAuth
      * @param  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
+    public function handle($request, Closure $next, $guard = 'admin')
     {
-        //当 auth 中间件判定某个用户未认证，会返回一个 JSON 401 响应，或者，如果不是 Ajax 请求的话，将用户重定向到 login 命名路由（也就是登录页面）。
+        dd(Auth::user());
+        var_dump(Auth::guard($guard)->check());
         if (Auth::guard($guard)->guest()) {
-            if ($request->ajax() || $request->wantsJson()) {
-                return response('Unauthorized.', 401);
-            } else {
-                if($request->route()->getActionName() != 'App\Admin\Controllers\LoginController@index'){
-                    return redirect()->to('/admin/login/index');
-                }
-            }
+            redirect()->to('/admin/login/index');
         }
         return $next($request);
     }
