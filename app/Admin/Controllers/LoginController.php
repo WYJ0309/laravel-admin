@@ -4,35 +4,38 @@
 namespace App\Admin\Controllers;
 
 
-use App\Http\Controllers\Controller;
+use App\Models\AdminUser;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Request;
 
-class LoginController extends Controller
+class LoginController extends AdminController
 {
 
     use AuthenticatesUsers;
     //登录页面
     public function index(){
 
-        echo 'this is a login form page!!!';
-        die;
+        dd(Auth::guard('admin')->user());
     }
 
-    //登陆操作
-    public function loginOpt(Request $request){
-        print_r(Request::all());
-    }
-
-    //后台管理员退出跳转到后台登录页面
-    public function logout(Request $request)
+    public function loginOpt(Request $request)
     {
-        $this->guard()->logout();
+        $data = Request::all();
+//        username=admin123&password=123456
+//        print_r($data);
+//        $data['password'] = Hash::make($data['password']);
+//        $res = AdminUser::create($data);
+//        var_dump($res);
+        if ($this->authAdmin->attempt(['username' => $data['username'], 'password' => $data['password']],true)) {
+            //认证通过
+            $rt = array('status' => 200, 'msg' => '登陆成功', 'data' => array('isLogin' => true));
+        } else {
+            $rt = array('status' => 400, 'msg' => '登陆失败', 'data' => array('isLogin' => false));
+        }
 
-        $request->session()->invalidate();
-
-        return redirect('/admin/login');
+        return response()->json($rt);
     }
 
 }

@@ -15,12 +15,13 @@ class AdminAuth
      * @param  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = 'admin')
+    public function handle($request, Closure $next)
     {
-        dd(Auth::user());
-        var_dump(Auth::guard($guard)->check());
-        if (Auth::guard($guard)->guest()) {
-            redirect()->to('/admin/login/index');
+        //Auth::guard('admin')->user()，不加'admin '默认取'web'中的
+        //print_r(Auth::guard($guard)->user());
+        //未登录的直接进入登录页面
+        if(!Auth::guard('admin')->check()){
+            return redirect()->guest('login');
         }
         return $next($request);
     }

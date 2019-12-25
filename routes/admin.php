@@ -15,9 +15,9 @@ use Illuminate\Http\Request;
 
 //Route::any('index','HomeController@index');
 //Route::any('test','HomeController@test')->middleware('test');
-Route::get('/', 'LoginController@index');
+Route::get('/', 'LoginController@index');//后台登陆页面
 Route::group(['middleware'=>'admin_auth'], function() {
-    Route::get('/home/index', 'HomeController@index');
-    Route::get('/login', 'LoginController@loginOpt');
+    Route::get('login/login', 'LoginController@loginOpt');//后台登陆操作
+    Route::get('home/index', 'AdminController@index');//后台主页
 
 });
