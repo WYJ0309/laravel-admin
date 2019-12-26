@@ -15,9 +15,11 @@ use Illuminate\Http\Request;
 
 //Route::any('index','HomeController@index');
 //Route::any('test','HomeController@test')->middleware('test');
-Route::get('/', 'LoginController@index');//后台登陆页面
+Route::get('/captcha/{name?}', 'LoginController@captcha');//验证码图片
+Route::get('/login/index', 'LoginController@index');//后台登陆页面
+Route::any('login/login', 'LoginController@loginOpt');//后台登陆操作
 Route::group(['middleware'=>'admin_auth'], function() {
-    Route::get('login/login', 'LoginController@loginOpt');//后台登陆操作
+    Route::any('login/out', 'LoginController@loginOut');//后台退出操作
     Route::get('home/index', 'AdminController@index');//后台主页
 
 });
