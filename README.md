@@ -1,3 +1,5 @@
+修改为国内镜像：
+    composer config -g repo.packagist composer https://packagist.phpcomposer.com
 1. git clone https://github.com/laravel/laravel.git
 2. composer install
 3. 配置数据库等信息

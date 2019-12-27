@@ -6,13 +6,13 @@
  */
 namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
+
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
 class AdminUser extends Authenticatable
 {
-    use Notifiable;
+
     public $table = 'admin_users';
     /**
      * The attributes that are mass assignable.
@@ -20,7 +20,7 @@ class AdminUser extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username','name','avatar','email', 'password',
+        'username', 'password',
     ];
 
     /**
@@ -29,6 +29,7 @@ class AdminUser extends Authenticatable
      * @var array
      */
     protected $hidden = [
+        //remember_token 字段用于记住我的功能
         'password', 'remember_token',
     ];
 

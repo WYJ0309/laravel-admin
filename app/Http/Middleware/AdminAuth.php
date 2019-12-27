@@ -21,7 +21,8 @@ class AdminAuth
         //Auth::guard('admin')->user()，不加'admin '默认取'web'中的
         //print_r(Auth::guard($guard)->user());
         //未登录的直接进入登录页面
-        //dd(Auth::guard('admin'));die;
+        //Auth::guard($guard)->guest();判断用户是否来宾，可用于中间件，判断用户是否登录，返回false，则已经登录，反之，跳转会登录页面
+        //var_dump(Auth::guard('admin')->user());die;//获取已经登录的用户信息，注意在__construct()中无法获取，可以在中间件里面获取
         if(!Auth::guard('admin')->check()){
             if(!in_array(Request::route()->getActionName(),['App\Admin\Controllers\LoginController@index','App\Admin\Controllers\LoginController@loginOpt','App\Admin\Controllers\LoginController@captcha'])){
                 return redirect()->guest('admin/login/index');

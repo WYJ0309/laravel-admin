@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Request;
-
 class LoginController extends AdminController
 {
 
@@ -45,13 +44,13 @@ class LoginController extends AdminController
 //        $data['password'] = Hash::make($data['password']);
 //        $res = AdminUser::create($data);
 //        var_dump($res);
-
         if (Cache::get('captcha') != $data['captcha']){
             return response()->json(array('status' => 200, 'msg' => '验证码错误', 'data' => []));
         }
         Cache::forget('captcha');
-        if (Auth::guard('admin')->attempt(['username' => $data['login_name'], 'password' => $data['login_pass']],true)) {
-            Auth::guard('admin')->attempt(['username' => $data['login_name'], 'password' => $data['login_pass']]);
+        $loginArr = ['username' => $data['login_name'], 'password' => $data['login_pass']];
+
+        if (Auth::guard('admin')->attempt($loginArr,true)) {
             //认证通过
             $rt = array('status' => 200, 'msg' => '登陆成功!', 'data' => []);
         } else {

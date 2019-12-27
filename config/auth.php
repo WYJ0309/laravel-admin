@@ -45,6 +45,7 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        //Laravel Auth 验证登录
         'admin'=>[
             'driver'=>'session',
             'provider'=>'admin_user'
