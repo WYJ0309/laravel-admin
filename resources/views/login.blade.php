@@ -60,20 +60,20 @@
                             </div>
                         </div>
                         <div class="form-bottom">
-                            <form role="form" action="" method="post" class="registration-form">
+                            <form role="form" action="{{ url('/admin/login/login') }}" method="post" class="registration-form">
                                 <div class="form-group">
                                     <label class="sr-only" for="login_name">Login name</label>
-                                    <input type="text" name="form-first-name" placeholder="Login name..." class="form-first-name form-control" id="login_name">
+                                    <input type="text" name="login_name" placeholder="Login name..." class="form-first-name form-control" id="login_name" value="">
                                 </div>
                                 <div class="form-group">
                                     <label class="sr-only" for="login_pass">Login pass</label>
-                                    <input type="text" name="form-last-name" placeholder="Login pass..." class="form-last-name form-control" id="login_pass">
+                                    <input type="text" name="login_pass" placeholder="Login pass..." class="form-last-name form-control" id="login_pass" value="">
                                 </div>
                                 <div class="form-group">
                                     <label class="sr-only" for="form-email">Captcha</label>
                                     <img id="captcha_img" data-src="{{ url('/admin/captcha') }}" src="{{ url('/admin/captcha') }}">
                                     <label class="col-sm-8">
-                                        <input type="text" name="captcha" placeholder="Captcha..." class="form-email form-control" id="captcha">
+                                        <input type="text" name="captcha" placeholder="Captcha..." class="form-email form-control" id="captcha" value="">
                                     </label>
                                 </div>
                                 <button type="button" id="login_btn" class="btn btn-info">Login In it!</button>
@@ -92,7 +92,10 @@
                 $(document).on('click','#login_btn',function(){
                     var login_json = {"login_name":$("#login_name").val(),"login_pass":$("#login_pass").val(),"captcha":$("#captcha").val()};
                     $.post("{{ url('/admin/login/login') }}",login_json,function (data) {
-                        console.log(data);
+                        layer.msg(data.msg)
+                        if(data.status){
+                            location.href = '/admin/home/index';
+                        }
                     });
                 });
                 $("#captcha_img").on('click',function () {

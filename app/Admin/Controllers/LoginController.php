@@ -45,16 +45,17 @@ class LoginController extends AdminController
 //        $res = AdminUser::create($data);
 //        var_dump($res);
         if (Cache::get('captcha') != $data['captcha']){
-            return response()->json(array('status' => 200, 'msg' => '验证码错误', 'data' => []));
+            return response()->json(array('status' => false, 'msg' => '验证码错误', 'data' => []));
         }
         Cache::forget('captcha');
         $loginArr = ['username' => $data['login_name'], 'password' => $data['login_pass']];
 
         if (Auth::guard('admin')->attempt($loginArr,true)) {
-            //认证通过
-            $rt = array('status' => 200, 'msg' => '登陆成功!', 'data' => []);
+//            $adminUser = Auth::guard('admin')->user();
+//            Auth::guard('admin')->login($adminUser,true);
+            $rt = array('status' => true, 'msg' => '登陆成功!', 'data' => []);
         } else {
-            $rt = array('status' => 400, 'msg' => '登陆失败', 'data' => []);
+            $rt = array('status' => false, 'msg' => '登陆失败', 'data' => []);
         }
         return response()->json($rt);
     }

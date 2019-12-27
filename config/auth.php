@@ -107,7 +107,7 @@ return [
             'throttle' => 60,
         ],
         'admin_user' => [
-            'provider' => 'admin',
+            'provider' => 'admin_user',
             'table' => 'admin_users',
             'expire' => 60,
             'throttle' => 60,
