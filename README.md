@@ -25,3 +25,6 @@
     https://xueyuanjun.com/post/9741.html
     https://xueyuanjun.com/post/19948   
     https://www.jianshu.com/p/ee8df298841e
+15. php artisan make:migration 表名称
+   在database/migrations目录设置表字段
+   运行php artisan migrate    
