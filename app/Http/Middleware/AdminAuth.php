@@ -29,7 +29,7 @@ class AdminAuth
 //            if(!in_array(Request::route()->getActionName(),['App\Admin\Controllers\LoginController@index','App\Admin\Controllers\LoginController@loginOpt','App\Admin\Controllers\LoginController@captcha'])){
 //                return redirect()->guest('admin/login/index');
 //            }
-            return redirect()->guest('admin/login/index');
+            //return redirect()->guest('admin/login/index');
         }
         return $next($request);
     }

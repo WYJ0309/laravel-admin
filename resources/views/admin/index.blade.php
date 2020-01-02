@@ -1,90 +1,292 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>后台登陆页面</title>
-        <link rel="stylesheet" href="{{asset('admin/layui/css/layui.css')}}">
-    </head>
-    <body>
-    <div class="layui-container">
-        <div class="layui-row">
-            <div class="layui-header">
-                <div class="layui-logo">layui 后台布局</div>
-                <!-- 头部区域（可配合layui已有的水平导航） -->
-                <ul class="layui-nav layui-layout-left">
-                    <li class="layui-nav-item"><a href="">控制台</a></li>
-                    <li class="layui-nav-item"><a href="">商品管理</a></li>
-                    <li class="layui-nav-item"><a href="">用户</a></li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">其它系统</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="">邮件管理</a></dd>
-                            <dd><a href="">消息管理</a></dd>
-                            <dd><a href="">授权管理</a></dd>
-                        </dl>
-                    </li>
-                </ul>
-                <ul class="layui-nav layui-layout-right">
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">
-                            <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                            贤心
-                        </a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="">基本资料</a></dd>
-                            <dd><a href="">安全设置</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item"><a href="">退了</a></li>
-                </ul>
-            </div>
 
-            <div class="layui-side layui-bg-black">
-                <div class="layui-side-scroll">
-                    <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-                    <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-                        <li class="layui-nav-item layui-nav-itemed">
-                            <a class="" href="javascript:;">所有商品</a>
-                            <dl class="layui-nav-child">
-                                <dd><a href="javascript:;">列表一</a></dd>
-                                <dd><a href="javascript:;">列表二</a></dd>
-                                <dd><a href="javascript:;">列表三</a></dd>
-                                <dd><a href="">超链接</a></dd>
-                            </dl>
-                        </li>
-                        <li class="layui-nav-item">
-                            <a href="javascript:;">解决方案</a>
-                            <dl class="layui-nav-child">
-                                <dd><a href="javascript:;">列表一</a></dd>
-                                <dd><a href="javascript:;">列表二</a></dd>
-                                <dd><a href="">超链接</a></dd>
-                            </dl>
-                        </li>
-                        <li class="layui-nav-item"><a href="">云市场</a></li>
-                        <li class="layui-nav-item"><a href="">发布商品</a></li>
-                    </ul>
-                </div>
-            </div>
 
-            <div class="layui-body">
-                <!-- 内容主体区域 -->
-                <div style="padding: 15px;">内容主体区域</div>
-            </div>
+@extends('admin.main')
 
-            <div class="layui-footer">
-                <!-- 底部固定区域 -->
-                © layui.com - 底部固定区域
-            </div>
-        </div>
+
+@section('content')
+    <blockquote class="layui-elem-quote">
+        本页面只是演示静态表格，如果你需要的是数据表格，可前往：
+        <a class="layui-btn layui-btn-normal" href="table.html" target="_blank">表格模块示例</a>
+    </blockquote>
+
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+        <legend>默认表格</legend>
+    </fieldset>
+
+    <div class="layui-form">
+        <table class="layui-table">
+            <colgroup>
+                <col width="150">
+                <col width="150">
+                <col width="200">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>人物</th>
+                <th>民族</th>
+                <th>出场时间</th>
+                <th>格言</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>贤心</td>
+                <td>汉族</td>
+                <td>1989-10-14</td>
+                <td>人生似修行</td>
+            </tr>
+            <tr>
+                <td>张爱玲</td>
+                <td>汉族</td>
+                <td>1920-09-30</td>
+                <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
+            </tr>
+            <tr>
+                <td>Helen Keller</td>
+                <td>拉丁美裔</td>
+                <td>1880-06-27</td>
+                <td> Life is either a daring adventure or nothing.</td>
+            </tr>
+            <tr>
+                <td>岳飞</td>
+                <td>汉族</td>
+                <td>1103-北宋崇宁二年</td>
+                <td>教科书再滥改，也抹不去“民族英雄”的事实</td>
+            </tr>
+            <tr>
+                <td>孟子</td>
+                <td>华夏族（汉族）</td>
+                <td>公元前-372年</td>
+                <td>猿强，则国强。国强，则猿更强！ </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-    <script src="{{asset('admin/layui/layui.js')}}"></script>
-    <script>
-        //一般直接写在一个js文件中
-        layui.use(['layer', 'form'], function(){
-            var layer = layui.layer,form = layui.form;
-            //layer.msg('Hello World');
-        });
-    </script>
-    </body>
-</html>
+
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+        <legend>行边框表格</legend>
+    </fieldset>
+
+    <table class="layui-table" lay-skin="line">
+        <colgroup>
+            <col width="150">
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>人物</th>
+            <th>民族</th>
+            <th>出场时间</th>
+            <th>格言</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>贤心</td>
+            <td>汉族</td>
+            <td>1989-10-14</td>
+            <td>人生似修行</td>
+        </tr>
+        <tr>
+            <td>张爱玲</td>
+            <td>汉族</td>
+            <td>1920-09-30</td>
+            <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
+        </tr>
+        <tr>
+            <td>Helen Keller</td>
+            <td>拉丁美裔</td>
+            <td>1880-06-27</td>
+            <td> Life is either a daring adventure or nothing.</td>
+        </tr>
+        <tr>
+            <td>岳飞</td>
+            <td>汉族</td>
+            <td>1103-北宋崇宁二年</td>
+            <td>教科书再滥改，也抹不去“民族英雄”的事实</td>
+        </tr>
+        <tr>
+            <td>孟子</td>
+            <td>华夏族（汉族）</td>
+            <td>公元前-372年</td>
+            <td>猿强，则国强。国强，则猿更强！ </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+        <legend>列边框表格</legend>
+    </fieldset>
+
+    <table class="layui-table" lay-even="" lay-skin="row">
+        <colgroup>
+            <col width="150">
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>人物</th>
+            <th>民族</th>
+            <th>出场时间</th>
+            <th>格言</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>贤心</td>
+            <td>汉族</td>
+            <td>1989-10-14</td>
+            <td>人生似修行</td>
+        </tr>
+        <tr>
+            <td>张爱玲</td>
+            <td>汉族</td>
+            <td>1920-09-30</td>
+            <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
+        </tr>
+        <tr>
+            <td>Helen Keller</td>
+            <td>拉丁美裔</td>
+            <td>1880-06-27</td>
+            <td> Life is either a daring adventure or nothing.</td>
+        </tr>
+        <tr>
+            <td>岳飞</td>
+            <td>汉族</td>
+            <td>1103-北宋崇宁二年</td>
+            <td>教科书再滥改，也抹不去“民族英雄”的事实</td>
+        </tr>
+        <tr>
+            <td>孟子</td>
+            <td>华夏族（汉族）</td>
+            <td>公元前-372年</td>
+            <td>猿强，则国强。国强，则猿更强！ </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+        <legend>无边框表格</legend>
+    </fieldset>
+
+    <table class="layui-table" lay-even="" lay-skin="nob">
+        <colgroup>
+            <col width="150">
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>人物</th>
+            <th>民族</th>
+            <th>出场时间</th>
+            <th>格言</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>贤心</td>
+            <td>汉族</td>
+            <td>1989-10-14</td>
+            <td>人生似修行</td>
+        </tr>
+        <tr>
+            <td>张爱玲</td>
+            <td>汉族</td>
+            <td>1920-09-30</td>
+            <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
+        </tr>
+        <tr>
+            <td>Helen Keller</td>
+            <td>拉丁美裔</td>
+            <td>1880-06-27</td>
+            <td> Life is either a daring adventure or nothing.</td>
+        </tr>
+        <tr>
+            <td>岳飞</td>
+            <td>汉族</td>
+            <td>1103-北宋崇宁二年</td>
+            <td>教科书再滥改，也抹不去“民族英雄”的事实</td>
+        </tr>
+        <tr>
+            <td>孟子</td>
+            <td>华夏族（汉族）</td>
+            <td>公元前-372年</td>
+            <td>猿强，则国强。国强，则猿更强！ </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+        <legend>其它尺寸表格</legend>
+    </fieldset>
+
+    <table class="layui-table" lay-size="lg">
+        <colgroup>
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>昵称</th>
+            <th>加入时间</th>
+            <th>签名</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>贤心</td>
+            <td>2016-11-29</td>
+            <td>人生就像是一场修行</td>
+        </tr>
+        <tr>
+            <td>许闲心</td>
+            <td>2016-11-28</td>
+            <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
+        </tr>
+        <tr>
+            <td>sentsin</td>
+            <td>2016-11-27</td>
+            <td> Life is either a daring adventure or nothing.</td>
+        </tr>
+        </tbody>
+    </table>
+    <table class="layui-table" lay-size="sm">
+        <colgroup>
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>昵称</th>
+            <th>加入时间</th>
+            <th>签名</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>贤心</td>
+            <td>2016-11-29</td>
+            <td>人生就像是一场修行</td>
+        </tr>
+        <tr>
+            <td>许闲心</td>
+            <td>2016-11-28</td>
+            <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
+        </tr>
+        <tr>
+            <td>sentsin</td>
+            <td>2016-11-27</td>
+            <td> Life is either a daring adventure or nothing.</td>
+        </tr>
+        </tbody>
+    </table>
+@endsection

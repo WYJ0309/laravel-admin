@@ -21,4 +21,7 @@ Route::group(['middleware'=>'admin_auth'], function() {
     Route::any('login/out', 'LoginController@loginOut');//后台退出操作
     Route::get('home/index', 'AdminController@index');//后台主页
 
+
+
+    Route::get('menu/index', 'MenuController@index');//菜单列表
 });
