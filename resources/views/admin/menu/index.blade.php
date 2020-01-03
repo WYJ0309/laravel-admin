@@ -1,6 +1,13 @@
 @extends('admin.main')
 
 @section('content')
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <a type="button" class="layui-inline" href="{{ url('admin/menu/add') }}">
+                <i class="layui-icon">添加&#xe654;</i>
+            </a>
+        </div>
+    </div>
     <table class="layui-table" lay-size="sm">
         <thead>
             <tr>
