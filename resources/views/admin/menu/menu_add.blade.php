@@ -2,32 +2,28 @@
 
 @section('content')
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-        <legend>菜单编辑</legend>
+        <legend>添加菜单</legend>
     </fieldset>
     <form class="layui-form" action="" method="post" >
         <div class="layui-form-item">
             <label class="layui-form-label">路由名称</label>
             <div class="layui-input-block">
-                <input type="text" name="route_name" lay-verify="required" lay-reqtext="路由名称必填" placeholder="请输入名称" class="layui-input" value="{{ $result['route_name'] }}">
+                <input type="text" name="route_name" lay-verify="required" lay-reqtext="路由名称必填" placeholder="请输入名称" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">路由</label>
             <div class="layui-input-block">
-                <input type="text" name="route_url" lay-verify="required" lay-reqtext="路由是访问地址，不能为空" placeholder="请输入" autocomplete="off" class="layui-input" value="{{ $result['route_url'] }}">
+                <input type="text" name="route_url" lay-verify="required" lay-reqtext="路由是访问地址，不能为空" placeholder="请输入" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">上级菜单</label>
             <div class="layui-input-block">
                 <select name="route_pid">
-                    <option value="0">顶级菜单</option>
+                    <option value="0">顶级分类</option>
                     @foreach($cateList as $val)
-                        @if($val['id'] == $result['route_pid'])
-                            <option value="{{ $val['id'] }}" selected >{{ $val['route_name'] }}</option>
-                        @else
-                            <option value="{{ $val['id'] }}">{{ $val['route_name'] }}</option>
-                        @endif
+                    <option value="{{ $val['id'] }}">{{ $val['route_name'] }}</option>
                     @endforeach
                 </select>
             </div>
@@ -42,7 +38,6 @@
 
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <input type="hidden" name="id" value="{{ $result['id'] }}" />
                 <button type="button" class="layui-btn" lay-submit="" lay-filter="menu_add">立即提交</button>
             </div>
         </div>

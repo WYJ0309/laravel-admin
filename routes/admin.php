@@ -27,4 +27,5 @@ Route::group(['middleware'=>'admin_auth'], function() {
     Route::get('menu/add', 'MenuController@menuAdd');//菜单添加页面
     Route::get('menu/edit', 'MenuController@menuEdit');//菜单编辑页面
     Route::post('menu/save', 'MenuController@menuSave');//菜单保存
+    Route::post('menu/del', 'MenuController@menuDelete');//菜单删除
 });

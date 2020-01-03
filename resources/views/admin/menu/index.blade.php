@@ -1,9 +1,6 @@
 @extends('admin.main')
 
 @section('content')
-    <a type="button" class="layui-btn layui-btn-sm" href="{{ url('admin/menu/add') }}">
-        <i class="layui-icon">添加&#xe654;</i>
-    </a>
     <table class="layui-table" lay-size="sm">
         <thead>
             <tr>
@@ -32,17 +29,45 @@
                     <td>{{ $menu['created_at'] }}</td>
                     <td>{{ $menu['updated_at'] }}</td>
                     <td>
-                        <a class="layui-btn layui-btn-xs" href="{{ url('admin/menu/edit',['id'=>$menu['id']]) }}"><i class="layui-icon">编辑</i></a>
-                        <a class="layui-btn layui-btn-xs layui-btn-danger delBtn"><i class="layui-icon">删除</i></a>
+                        <a class="layui-btn layui-btn-xs" href="{{ url('admin/menu/edit?id='.$menu['id']) }}"><i class="layui-icon">编辑</i></a>
+                        <a class="layui-btn layui-btn-xs layui-btn-danger delBtn" del_id="{{ $menu['id'] }}"><i class="layui-icon">删除</i></a>
                     </td>
                 </tr>
+                @if(!empty($menu['son']))
+                    @foreach($menu['son'] as $son_menu)
+                        <tr>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;|--{{ $son_menu['id'] }}</td>
+                            <td>{{ $son_menu['route_name'] }}</td>
+                            <td>{{ $son_menu['route_url'] }}</td>
+                            <td>
+                                @if($son_menu['route_sign'] == 1)
+                                    <button type="button" class="layui-btn layui-btn-xs layui-btn-radius">展示</button>
+                                @elseif($son_menu['route_sign'] == 2)
+                                    <button type="button" class="layui-btn layui-btn-sm layui-btn-danger layui-btn-radius">不展示</button>
+                                @endif
+                            </td>
+                            <td>{{ $son_menu['created_at'] }}</td>
+                            <td>{{ $son_menu['updated_at'] }}</td>
+                            <td>
+                                <a class="layui-btn layui-btn-xs" href="{{ url('admin/menu/edit?id='.$son_menu['id']) }}"><i class="layui-icon">编辑</i></a>
+                                <a class="layui-btn layui-btn-xs layui-btn-danger delBtn" del_id="{{ $son_menu['id'] }}"><i class="layui-icon">删除</i></a>
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
             @endforeach
         </tbody>
     </table>
     <script>
         $(function () {
             $(".delBtn").on('click',function () {
-                alert($(this).text());
+                $.post("{{ url('admin/menu/del') }}",{"id":$(this).attr('del_id')},function (data) {
+                    console.log(data);
+                    if(data.status){
+                        alert(data.msg);
+                        setTimeout("location.href='/admin/menu/index'", 500 )
+                    }
+                })
             });
         });
     </script>

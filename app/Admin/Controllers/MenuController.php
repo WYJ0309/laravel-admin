@@ -7,48 +7,71 @@ namespace App\Admin\Controllers;
 
 
 use App\Models\MenusModel;
-use Illuminate\Support\Facades\URL;
+
 
 class MenuController extends AdminController
 {
     //-------------------------后台菜单展示---------------------------------
     //菜单列表--页面接口
     public function index(){
-        $data = request()->all();
-        $page = empty($data['page'])?1:$data['page'];
-        $pageSize = empty($data['page_size'])?10:$data['page_size'];
         $where = [];
+        $where['back_front'] = 1;
 
-        $list = MenusModel::query()->where($where)->limit($pageSize)->offset($page)->get();
+
+        $list = MenusModel::query()->where($where)->get();
         $count = MenusModel::query()->where($where)->count();
-        URL::to();
-
-        return view('admin.menu.index',['count'=>$count,'data'=>$list]);
+        $result = [];
+        foreach ($list->toArray() as $value){
+            if(empty($value['route_pid'])){
+                $result[$value['id']] = $value;
+            }else{
+                $result[$value['route_pid']]['son'][] = $value;
+            }
+        }
+        $responseArr = ['count'=>$count,'data'=>$result];
+        return view('admin.menu.index',$responseArr);
     }
     //菜单添加
     public function menuAdd(){
-
-        return view('admin.menu.menu_add');
+        $cateObj = MenusModel::query()->where(['back_front'=>1,'route_pid'=>0])->get();
+        return view('admin.menu.menu_add',['cateList'=>$cateObj->isEmpty()?[]:$cateObj->toArray()]);
     }
     //菜单编辑
     public function menuEdit(){
-
-        return view('admin.menu.menu_edit');
+        $data = request()->all();
+        $cateObj = MenusModel::query()->where(['back_front'=>1,'route_pid'=>0])->get();
+        $info = MenusModel::query()->where(['id'=>$data['id']])->first();
+        return view('admin.menu.menu_edit',['cateList'=>$cateObj->isEmpty()?[]:$cateObj->toArray(),'result'=>$info]);
     }
     //菜单保存
     public function menuSave(){
         $data = request()->all();
         $data['back_front'] = empty($data['back_front'])?1:2;//1后台菜单 2前台菜单
-        $res = MenusModel::create($data);
-        if($res->id){
-            return response()->json(['data'=>[],'msg'=>'添加成功','status'=>true]);
-        }else{
-            return response()->json(['data'=>[],'msg'=>'添加失败','status'=>false]);
+        try{
+            if(empty($data['id'])){
+                $res = MenusModel::create($data);
+                if($res->id){
+                    return response()->json(['data'=>[],'msg'=>'添加成功','status'=>true]);
+                }else{
+                    return response()->json(['data'=>[],'msg'=>'添加失败','status'=>false]);
+                }
+            }else{
+                $res = MenusModel::query()->where(['id'=>$data['id']])->update($data);
+                if($res){
+                    return response()->json(['data'=>[],'msg'=>'修改成功','status'=>true]);
+                }else{
+                    return response()->json(['data'=>[],'msg'=>'修改失败','status'=>false]);
+                }
+            }
+        }catch (\Exception $e){
+            return response()->json(['data'=>[],'msg'=>'操作异常','status'=>false]);
         }
     }
     //菜单删除
     public function menuDelete(){
-
+        $data = request()->all();
+        MenusModel::query()->where(['id'=>$data['id']])->delete();
+        return response()->json(['data'=>[],'msg'=>'删除成功','status'=>true]);
     }
 
     //-------------------------前台菜单控制---------------------------------
