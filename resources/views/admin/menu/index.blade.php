@@ -15,6 +15,7 @@
                 <th>路由名称</th>
                 <th>路由url</th>
                 <th>是否展示</th>
+                <th>排序</th>
                 <th>添加时间</th>
                 <th>更新时间</th>
                 <th>操作</th>
@@ -33,6 +34,7 @@
                             <button type="button" class="layui-btn layui-btn-sm layui-btn-danger layui-btn-radius">不展示</button>
                         @endif
                     </td>
+                    <td>{{ $menu['route_sort'] }}</td>
                     <td>{{ $menu['created_at'] }}</td>
                     <td>{{ $menu['updated_at'] }}</td>
                     <td>
@@ -53,6 +55,7 @@
                                     <button type="button" class="layui-btn layui-btn-sm layui-btn-danger layui-btn-radius">不展示</button>
                                 @endif
                             </td>
+                            <td>{{ $son_menu['route_sort'] }}</td>
                             <td>{{ $son_menu['created_at'] }}</td>
                             <td>{{ $son_menu['updated_at'] }}</td>
                             <td>

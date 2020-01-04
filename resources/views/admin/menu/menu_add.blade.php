@@ -35,15 +35,18 @@
                 <input type="radio" name="route_sign" value="2" title="不展示">
             </div>
         </div>
-
+        <div class="layui-form-item">
+            <label class="layui-form-label">路由排序</label>
+            <div class="layui-input-block">
+                <input type="text" name="route_sort" lay-verify="required" lay-reqtext="纯数字" placeholder="请输入" autocomplete="off" class="layui-input" value="">
+            </div>
+        </div>
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button type="button" class="layui-btn" lay-submit="" lay-filter="menu_add">立即提交</button>
             </div>
         </div>
     </form>
-
-    <script src="{{asset('admin/layui/layui.js')}}"></script>
     <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
     <script>
         layui.use(['form'], function(){

@@ -6,6 +6,7 @@
     <title>layout 后台大布局 - Layui</title>
     <link rel="stylesheet" href="{{asset('admin/layui/css/layui.css')}}">
     <script src="{{asset('admin/js/jquery-3.4.1.min.js')}}"></script>
+    <script src="{{asset('admin/layui/layui.js')}}"></script>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -23,31 +24,43 @@
         </ul>
     </div>
     <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+    @php
+        $menuList = \Illuminate\Support\Facades\Cache::get('admin_menu_arr');
+        $cur_url = $_SERVER['REQUEST_URI'];
+    @endphp
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-                <li class="layui-nav-item layui-nav-itemed"><a href="">控制台</a></li>
-                <li class="layui-nav-item"><a href="">菜单管理</a></li>
-                <li class="layui-nav-item"><a href="">权限管理</a></li>
-                <li class="layui-nav-item">
-                    <a class="" href="javascript:;">文章管理</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="javascript:;">列表三</a></dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">产品管理</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item"><a href="">单页管理</a></li>
-                <li class="layui-nav-item"><a href="">日志列表</a></li>
-                <li class="layui-nav-item"><a href="">咨询列表</a></li>
-                <li class="layui-nav-item"><a href="">系统配置</a></li>
+                @foreach($menuList as $val)
+                    @if(empty($val['son']))
+                        @if($cur_url == $val['route_url'])
+                            <li class="layui-nav-item layui-nav-itemed layui-btn-danger"><a href="{{ $val['route_url'] }}">{{ $val['route_name'] }}</a></li>
+                        @else
+                            <li class="layui-nav-item"><a href="{{ $val['route_url'] }}">{{ $val['route_name'] }}</a></li>
+                        @endif
+                    @else
+                        @if($cur_url == $val['route_url'])
+                            <li class="layui-nav-item layui-nav-itemed">
+                                <a href="{{ $val['route_url'] }}">{{ $val['route_name'] }}</a>
+                                <dl class="layui-nav-child">
+                                    @foreach($val['son'] as $son)
+                                        <dd class="layui-nav-itemed"><a href="{{ $son['route_url'] }}">{{ $son['route_name'] }}</a></dd>
+                                    @endforeach
+                                </dl>
+                            </li>
+                        @else
+                            <li class="layui-nav-item">
+                                <a href="{{ $val['route_url'] }}">{{ $val['route_name'] }}</a>
+                                <dl class="layui-nav-child">
+                                    @foreach($val['son'] as $son)
+                                        <dd><a href="{{ $son['route_url'] }}">{{ $son['route_name'] }}</a></dd>
+                                    @endforeach
+                                </dl>
+                            </li>
+                        @endif
+                    @endif
+                @endforeach
+
             </ul>
         </div>
     </div>
@@ -61,6 +74,14 @@
     <div class="layui-footer">
         © layui.com - 底部固定区域
     </div>
+
+    <script>
+        //JavaScript代码区域
+        layui.use('element', function(){
+            var element = layui.element;
+
+        });
+    </script>
 </div>
 </body>
 </html>
