@@ -28,4 +28,16 @@ Route::group(['middleware'=>'admin_auth'], function() {
     Route::get('menu/edit', 'MenuController@menuEdit');//菜单编辑页面
     Route::post('menu/save', 'MenuController@menuSave');//菜单保存
     Route::post('menu/del', 'MenuController@menuDelete');//菜单删除
+
+    Route::get('config/index','ConfigController@index');//配置页面
+    Route::post('config/save','ConfigController@saveConfig');//配置保存操作
+
+    Route::get('auth/index','RoleController@authList');//权限页面
+    Route::post('auth/save','AuthController@saveConfig');//权限保存操作
+
+    Route::get('article/index', 'ArticleController@index');//文章列表-页面
+    Route::get('article/add', 'ArticleController@articleAdd');//文章添加页面
+    Route::get('article/edit', 'ArticleController@articleEdit');//文章编辑页面
+    Route::post('article/save', 'ArticleController@articleSave');//文章保存
+    Route::post('article/del', 'ArticleController@articleDelete');//文章删除
 });

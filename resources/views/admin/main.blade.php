@@ -44,7 +44,7 @@
                                 <a href="{{ $val['route_url'] }}">{{ $val['route_name'] }}</a>
                                 <dl class="layui-nav-child">
                                     @foreach($val['son'] as $son)
-                                        <dd class="layui-nav-itemed"><a href="{{ $son['route_url'] }}">{{ $son['route_name'] }}</a></dd>
+                                        <dd class="layui-nav-itemed"><a href="{{ $son['route_url'] }}">&nbsp;&nbsp;&nbsp;&nbsp;{{ $son['route_name'] }}</a></dd>
                                     @endforeach
                                 </dl>
                             </li>
@@ -53,7 +53,7 @@
                                 <a href="{{ $val['route_url'] }}">{{ $val['route_name'] }}</a>
                                 <dl class="layui-nav-child">
                                     @foreach($val['son'] as $son)
-                                        <dd><a href="{{ $son['route_url'] }}">{{ $son['route_name'] }}</a></dd>
+                                        <dd><a href="{{ $son['route_url'] }}">&nbsp;&nbsp;&nbsp;&nbsp;{{ $son['route_name'] }}</a></dd>
                                     @endforeach
                                 </dl>
                             </li>

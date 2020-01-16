@@ -32,7 +32,8 @@ class RoleController extends AdminController
 
     //权限列表
     public function authList(){
-
+        $responseArr = [];
+        return view('admin.role.index',$responseArr);
     }
     //权限添加
     public function authAdd(){
