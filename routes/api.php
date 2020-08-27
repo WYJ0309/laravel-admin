@@ -16,3 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::any('v1/playingList', 'TestController@index');
+Route::any('v1/bannerList','TestController@bannerList');
+Route::any('banner/list','TestController@bannerList');
+Route::any('cinema/list','TestController@cinemaList');

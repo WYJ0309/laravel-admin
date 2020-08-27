@@ -13,8 +13,8 @@ class ConfigController extends AdminController
     
     //配置展示
     public function index(){
-        $json = SysConfigModel::query()->where(['type'=>1])->value('sys_val');
-        $responseArr = json_decode($json,true);
+        $jsonObj = SysConfigModel::query()->where(['type'=>1])->first();
+        $responseArr = json_decode($jsonObj['sys_val'],true);
         return view('admin.config.index',$responseArr);
     }
     //配置保存
@@ -24,7 +24,7 @@ class ConfigController extends AdminController
         if(empty($id)){
             SysConfigModel::create(['type'=>1,'type_name'=>'系统配置','sys_val'=>json_encode($data)]);
         }else{
-            SysConfigModel::query()->where(['id'=>$id])->update(['sys_val'=>json_encode($data)]);
+            SysConfigModel::query()->where(['id'=>$id])->update(['sys_val'=>json_encode($data,JSON_UNESCAPED_UNICODE)]);
         }
         return response()->json(['data'=>[],'msg'=>'操作成功','status'=>true]);
     }

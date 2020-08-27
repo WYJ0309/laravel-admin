@@ -1,16 +1,5 @@
 <?php
-
-
-/*
-|--------------------------------------------------------------------------
-| Admin Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+use Illuminate\Support\Facades\Route;
 
 //Route::any('index','HomeController@index');
 //Route::any('test','HomeController@test')->middleware('test');

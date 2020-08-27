@@ -48,6 +48,7 @@
                     data:data.field,
                     dataType:'JSON',
                     success:function(res){
+                        console.log(res)
                         if(res.status){
                             layer.alert(res.msg)
                         } else{
