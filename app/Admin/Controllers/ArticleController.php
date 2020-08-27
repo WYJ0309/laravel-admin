@@ -21,7 +21,6 @@ class ArticleController extends AdminController
     //文章添加
     public function articleAdd(){
         $cateList = ArticleCateModel::query()->get()->toArray();
-        print_r($cateList);die;
         $responseArr = ['cateList'=>$cateList];
         return view('admin.article.article_add',$responseArr);
     }

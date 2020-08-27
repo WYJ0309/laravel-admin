@@ -19,12 +19,6 @@
             tree.render({
                 elem: '#test1'  //绑定元素
                 ,showCheckbox: true
-                ,click: function(obj){
-                    alert('节点被点击的回调');
-                },
-                oncheck: function(obj){
-                    alert('复选框被点击的回调')
-                }
                 ,data: [{
                     title: '江西' //一级菜单
                     ,id:1//节点唯一索引值，用于对指定节点进行各类操作

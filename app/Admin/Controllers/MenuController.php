@@ -6,7 +6,7 @@
 namespace App\Admin\Controllers;
 
 
-use App\Models\MenusModel;
+use App\Models\MenuModel;
 use Illuminate\Support\Facades\Cache;
 
 
@@ -22,14 +22,14 @@ class MenuController extends AdminController
     }
     //菜单添加
     public function menuAdd(){
-        $cateObj = MenusModel::query()->where(['back_front'=>1,'route_pid'=>0])->get();
+        $cateObj = MenuModel::query()->where(['back_front'=>1,'route_pid'=>0])->get();
         return view('admin.menu.menu_add',['cateList'=>$cateObj->isEmpty()?[]:$cateObj->toArray()]);
     }
     //菜单编辑
     public function menuEdit(){
         $data = request()->all();
-        $cateObj = MenusModel::query()->where(['back_front'=>1,'route_pid'=>0])->get();
-        $info = MenusModel::query()->where(['id'=>$data['id']])->first();
+        $cateObj = MenuModel::query()->where(['back_front'=>1,'route_pid'=>0])->get();
+        $info = MenuModel::query()->where(['id'=>$data['id']])->first();
         return view('admin.menu.menu_edit',['cateList'=>$cateObj->isEmpty()?[]:$cateObj->toArray(),'result'=>$info]);
     }
     //菜单保存
@@ -38,7 +38,7 @@ class MenuController extends AdminController
         $data['back_front'] = empty($data['back_front'])?1:2;//1后台菜单 2前台菜单
         try{
             if(empty($data['id'])){
-                $res = MenusModel::create($data);
+                $res = MenuModel::create($data);
                 if($res->id){
                     Cache::forget('admin_menu_arr');
                     return response()->json(['data'=>[],'msg'=>'添加成功','status'=>true]);
@@ -46,7 +46,7 @@ class MenuController extends AdminController
                     return response()->json(['data'=>[],'msg'=>'添加失败','status'=>false]);
                 }
             }else{
-                $res = MenusModel::query()->where(['id'=>$data['id']])->update($data);
+                $res = MenuModel::query()->where(['id'=>$data['id']])->update($data);
                 if($res){
                     Cache::forget('admin_menu_arr');
                     return response()->json(['data'=>[],'msg'=>'修改成功','status'=>true]);
@@ -61,7 +61,7 @@ class MenuController extends AdminController
     //菜单删除
     public function menuDelete(){
         $data = request()->all();
-        MenusModel::query()->where(['id'=>$data['id']])->delete();
+        MenuModel::query()->where(['id'=>$data['id']])->delete();
         Cache::forget('admin_menu_arr');
         return response()->json(['data'=>[],'msg'=>'删除成功','status'=>true]);
     }

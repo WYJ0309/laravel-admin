@@ -9,7 +9,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MenusModel extends Model
+class MenuModel extends Model
 {
 
     public $table = 'menus';
