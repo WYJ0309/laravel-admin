@@ -8,7 +8,7 @@
 6. php artisan key:generate
 7. laravel 调试利器--laravel debugBar 扩展包安装    composer require barryvdh/laravel-debugbar
 8. 给.gitignore文件 增加内容
-9. 安装laravel-admin后台管理扩展 composer require encore/laravel-admin
+
 10 php artisan vendor:publish --provider="Encore\Admin\AdminServiceProvider"
 11 参考：https://github.com/z-song/laravel-admin/issues/1541
    php artisan admin:install

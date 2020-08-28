@@ -20,14 +20,14 @@
         <div class="layui-form-item">
             <label class="layui-form-label">显示/隐藏</label>
             <div class="layui-input-block">
-                <input type="radio" name="route_sign" value="1" title="展示" checked="">
-                <input type="radio" name="route_sign" value="2" title="隐藏">
+                <input type="radio" name="article_state" value="1" title="展示" checked="">
+                <input type="radio" name="article_state" value="2" title="隐藏">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">文章链接(可是外链)</label>
             <div class="layui-input-block">
-                <input type="text" name="art_href" value="" class="layui-input">
+                <input type="text" name="article_href" value="" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
@@ -52,6 +52,13 @@
             <div class="layui-input-block">
                 <button type="button" class="layui-btn" id="upload_pic"><i class="layui-icon">&#xe67c;</i>上传图片</button>
                 <input type="hidden" name="thumb_url" class="layui-input" value="">
+                <img id="thumb_url" width="200" height="180" src="{{ asset('admin/images/upload.png') }}"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">内容</label>
+            <div class="layui-input-block">
+                <textarea id="content" name="editor1" cols="100" rows="20" style="width:800px;height:200px;"></textarea>
             </div>
         </div>
         <div class="layui-form-item">
@@ -60,17 +67,32 @@
             </div>
         </div>
     </form>
-    <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+    <script src="{{asset('admin/kindeditor/kindeditor-all.js')}}"></script>
+    <script>
+        var editor;
+        KindEditor.ready(function(K) {
+            editor = K.create('#content', {
+                allowFileManager : true,
+                langType : 'zh-CN',
+                autoHeightMode : true
+            });
+        });
+    </script>
     <script>
         layui.use('upload', function(){
             var upload = layui.upload;
-
             //执行实例
             var uploadInst = upload.render({
-                elem: '#upload_pic' //绑定元素
-                ,url: '/upload/' //上传接口
-                ,done: function(res){
-                    //上传完毕回调
+                elem: '#upload_pic',
+                url: '{{ url("file/store") }}',
+                field:'image',
+                accept:'images',
+                exts:'jpg|png|gif|bmp|jpeg',
+                size:1024*5,
+                done: function(res){
+                    console.log(res);
+                    $("#thumb_url").attr('src',res.msg);
+                    $("input[name='thumb_url']").val(res.msg);
                 }
                 ,error: function(){
                     //请求异常回调
@@ -80,7 +102,6 @@
 
         layui.use(['form'], function(){
             var form = layui.form,layer = layui.layer;
-
             //自定义验证规则
             form.verify({
                 route_name: function(value){
@@ -91,8 +112,9 @@
             });
             //监听提交
             form.on('submit(menu_add)', function(data){
+                data.field.content = editor.html();
                 $.ajax({
-                    url:"{{ url('admin/menu/save') }}",
+                    url:"{{ url('admin/article/save') }}",
                     method:'post',
                     data:data.field,
                     dataType:'JSON',

@@ -36,28 +36,4 @@ class AdminController extends Controller
 
         return view('admin.index');
     }
-
-
-    public function store(Request $request)
-    {
-
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $allow_types = ['image/png', 'image/jpeg', 'image/gif'];
-            $file = $request->file('image');
-            if (!in_array($file->extension(), $allow_types)) {
-                return ['status' => 0, 'msg' => '图片类型不正确！'];
-            }
-            if ($file->getSize() > 1024 * 1024 * 5) {
-                return ['status' => 0, 'msg' => '图片大小不能超过 3M！'];
-            }
-            $extension = $file->extension();//文件后缀名
-            $localPath = $file->path();//文件服务端临时地址
-            $filename = date('YmdHis') . mt_rand(1000, 9999);
-
-            $path = $file->store('public/images');
-            echo $path;
-            //上传到本地
-            return ['status' => 1, 'msg' => '/storage' . str_replace('public', '', $path)];
-        }
-    }
 }
