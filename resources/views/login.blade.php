@@ -35,7 +35,7 @@
                 <img alt="" src='{{ asset('admin/images/key.png') }}'>
             </div>
             <input name="captcha" id="captcha" placeholder='验证码' maxlength="4" type='text' name="ValidateNum" autocomplete="off">
-            <div class='validation' style="opacity: 1; right: -5px;top: -3px;"><img id="captcha_img" data-src="{{ url('/admin/captcha') }}" src="{{ url('/admin/captcha') }}"></div>
+            <div class='validation' style="opacity: 1;right: -100px;top: 4px;"><img id="captcha_img" data-src="{{ url('/admin/captcha') }}" src="{{ url('/admin/captcha') }}"></div>
         </div>
         <div class='login_fields__submit'>
             <input type='button' value='登录'>

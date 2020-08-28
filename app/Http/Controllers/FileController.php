@@ -47,4 +47,10 @@ class FileController extends Controller
         $file = DB::table('files_store')->where(['unique_key'=>$unique_key])->first();
         return response()->file(storage_path().$file->file_dir.$file->file_name);
     }
+
+    public static function removeHtml($string){
+        $string = preg_replace("/(\s|\&nbsp\;|　|\xc2\xa0)/", " ", strip_tags($string));
+        $string = str_replace("&emsp","",$string);
+        return trim($string);
+    }
 }

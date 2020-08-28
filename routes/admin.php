@@ -32,4 +32,5 @@ Route::group(['middleware'=>'admin_auth'], function() {
     Route::get('article/edit', 'ArticleController@articleEdit');//文章编辑页面
     Route::post('article/save', 'ArticleController@articleSave');//文章保存
     Route::post('article/del', 'ArticleController@articleDelete');//文章删除
+    Route::post('article/opt', 'ArticleController@articleOpt');//文章显示、隐藏
 });
