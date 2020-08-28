@@ -1,8 +1,7 @@
 @charset "utf-8";
 *{margin: 0;padding: 0;font-family: "microsoft yahei";}
-ul{list-style: none;padding: 0;margin: 0;}
-a{text-decoration: none;color: #6F7479;}
 
+a{text-decoration: none;color: #6F7479;}
 body{font-family:"微软雅黑",Arial;background-size:cover;-webkit-text-size-adjust:none;margin: 0px;line-height: 1.5;color: #6F7479;font-size: 14px;}
 #nav-main{width: 960px;margin: 0 auto;overflow:hidden;}
 
@@ -103,7 +102,7 @@ body{font-family:"微软雅黑",Arial;background-size:cover;-webkit-text-size-ad
 
 article { width: 1200px; margin: auto;overflow: hidden }
 .blogs { float: left; width: 70%; overflow: hidden; }
-.blogs li { margin-bottom: 10px; overflow: hidden; padding: 20px; background: #fff }
+.blogs li { list-style-type:none;margin-bottom: 10px; overflow: hidden; padding: 20px; background: #fff }
 .blogs h3.blogtitle { line-height: 30px; height: 30px; margin: 10px 0; }
 .blogs .blogpic { overflow: hidden; width: 30%; display: block; float: left; margin-right: 20px; border-radius: 5px; ; }
 .blogs .blogpic img { width: 100% }
@@ -138,3 +137,34 @@ article { width: 1200px; margin: auto;overflow: hidden }
 .sidebar .paihang li i { width: 100px; height: 90px; overflow: hidden; display: block; border: #efefef 1px solid; float: left; margin-right: 10px }
 .sidebar .paihang li img { height: 100%; margin: auto; -moz-transition: all .5s ease; -webkit-transition: all .5s ease; transition: all .5s ease; }
 .sidebar .paihang ul li:hover i img { transform: scale(1.1) }
+
+.infos { float: left; width: 70%; overflow: hidden; background: #FFF; margin: 20px 0 }
+.newsview { padding: 0 30px }
+.intitle { line-height: 40px; height: 40px; font-size: 14px; ; border-bottom: #000 2px solid; }
+.intitle a { font-weight: normal; }
+.news_title { font-size: 24px; font-weight: normal; padding: 20px 0; color: #333; }
+.news_author { width: 100%; color: #999; line-height: 18px; }
+.news_author span { margin-right: 10px; padding-left: 20px }
+.au01 { background: url(../images/author2.png) no-repeat left center }
+.au02 { background: url(../images/date.png) no-repeat left center }
+.au03 b { color: #333; padding: 0 5px }
+.au04 { font-weight: normal; }
+.news_about { color: #888888; border: 1px solid #F3F3F3; padding: 10px; margin: 20px auto 15px auto; line-height: 23px; background: none repeat 0 0 #F6F6F6; }
+.news_about strong { color: #38485A; font-weight: 400 !important; font-size: 13px; padding-right: 8px; }
+.news_content { line-height: 24px; font-size: 14px; }
+.news_content p { overflow: hidden; padding-bottom: 4px; padding-top: 6px; word-wrap: break-word; }
+.tags a { background: #F4650E; padding: 3px 8px; margin: 0 5px 0 0; color: #fff; }
+.tags { margin: 10px 0; }
+.news_infos { line-height: 24px; text-align: justify; }
+.news_infos p { margin-bottom: 10px }
+.news_infos img { max-width: 650px; height: auto; }
+.share { padding: 20px; }
+.nextinfo { line-height: 24px; width: 100%; background: #FFF; border-radius: 10px; overflow: hidden; margin: 20px 0 }/*上一篇下一篇*/
+.nextinfo p { padding: 4px 10px; border-radius: 5px; }
+.nextinfo a:hover { color: #000; text-decoration: underline }
+/*相关文章*/
+.otherlink, .xzsm, .ffsm { width: 100%; background: #FFF; border-radius: 10px; overflow: hidden; margin: 20px 0 }
+.otherlink h2 { border-bottom: #000 2px solid; line-height: 40px; font-size: 14px; background: url(../images/5794.png) left 10px center no-repeat; padding-left: 40px; color: #000 }
+.otherlink ul { margin: 10px 0 }
+.otherlink li { line-height: 24px; height: 24px; display: block; width: 290px; float: left; overflow: hidden; margin-right: 30px; padding-left: 10px; }
+.otherlink li a:hover { text-decoration: underline; color: #000 }
