@@ -7,7 +7,25 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('front/css/index.css') }}"/>
 </head>
 <body>
-
+<div id="nav-main">
+    <div id="search" >
+        <div id="searchout">
+            <div id="search_type" >
+                <div class="search_top_type" type="web" >网页</div>
+                <div class="search_top_type" type="news">新闻</div>
+                <div class="search_top_type" type="image">图片</div>
+                <div class="search_top_type" type="video">视频</div>
+                <div class="search_top_type" type="music">博客</div>
+                <div class="search_top_type" type="map">地图</div>
+            </div>
+            <div id="searchform">
+                <div id="search_option" ></div>
+                <input type="text" id="search_input" name="search">
+                <div id="searchbutton"></div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="newsPg">
     <div class="banner">
         <img src="{{ asset('front/images/ban4.jpg') }}"/>

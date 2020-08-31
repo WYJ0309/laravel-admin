@@ -6,54 +6,10 @@
     <meta name="description" content="常用图标网址可切换，鼠标经过有遮罩层效果。" />
     <link href="{{ asset('front/css/index.css') }}" rel="stylesheet" type="text/css">
 </head>
-<body style="zoom: 1.1125;background-image: url('{{ asset('front/images/13.png') }}');">
-<div id="nav-main">
-    <div id="search" >
-        <div id="searchout">
-            <div id="search_type" >
-                <div class="search_top_type" type="web" >网页</div>
-                <div class="search_top_type" type="news">新闻</div>
-                <div class="search_top_type" type="image">图片</div>
-                <div class="search_top_type" type="video">视频</div>
-                <div class="search_top_type" type="music">博客</div>
-                <div class="search_top_type" type="map">地图</div>
-            </div>
-            <div id="searchform">
-                <div id="search_option" ></div>
-                <input type="text" id="search_input" name="search">
-                <div id="searchbutton"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="main">
-    <div class="slides">
-        <ul>
-            <li>
-                <ul>
-                    <li><div class="case_w"><img src="/front/images/renren.png" /></div></li>
-                    <li><div class="case_w"><img src="/front/images/dangdang.png" /></div></li>
-                </ul>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <ul>
-                    <li><div class="case_w"><img src="/front/images/douban.png" /></div></li>
-                    <li><div class="case_w"><img src="/front/images/youtube.png" /></div></li>
-                </ul>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <ul>
-                    <li><div class="case_w"><img src="/front/images/sina.png" /></div></li>
-                    <li><div class="case_w"><img src="/front/images/zhifubao.png" /></div></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-</div>
+<body>
+<header>
+    @include('front.nav')
+</header>
 <article>
     <div class="blogs">
         @foreach($result as $value)
