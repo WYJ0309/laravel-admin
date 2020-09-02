@@ -17,17 +17,17 @@ class IndexController extends Controller
         $artilceList = ArticleModel::query()->leftJoin('article_cate','article_cate.id','=','article.article_cate_id')->select(['article.*','article_cate.cate_name'])->get();
         return view('front.index',['result'=>$artilceList->toArray()]);
     }
-    //菜单添加
-    public function search(){
+    //
+    public function newsList(){
 
         return view('front.search',[]);
     }
-    //菜单编辑
+    //年度热词展示
     public function page(){
 
         return view('front.page',[]);
     }
-    //菜单保存
+    //图库展示
     public function image(){
 
         return view('front.image',[]);

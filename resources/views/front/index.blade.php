@@ -1,10 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>HTML5网页模板</title>
-    <meta name="keywords" content="HTML5网页模板" />
-    <meta name="description" content="常用图标网址可切换，鼠标经过有遮罩层效果。" />
-    <link href="{{ asset('front/css/index.css') }}" rel="stylesheet" type="text/css">
+    @component('front.component',['title'=>'网站标题','keyword'=>'关键词','description'=>'描述'])@endcomponent
 </head>
 <body>
 <header>

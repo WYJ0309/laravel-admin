@@ -1,3 +1,4 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>{{ $title }}</title>
 <meta name="keywords" content="{{ $keyword }}" />
 <meta name="description" content="{{ $description }}" />

@@ -1,10 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>HTML5网页模板</title>
-    <meta name="keywords" content="HTML5网页模板" />
-    <meta name="description" content="常用图标网址可切换，鼠标经过有遮罩层效果。" />
-    <link href="{{ asset('front/css/index.css') }}" rel="stylesheet" type="text/css">
+    @component('front.component',['title'=>$article_title,'keyword'=>$article_keyword,'description'=>$article_desc])@endcomponent
+    <script src="/admin/js/jquery-3.4.1.min.js"></script>
 </head>
 <body>
 <header>
@@ -65,5 +62,8 @@
         @endif
     </div>
 </article>
+<script>
+    $.getJSON("{{ url('news/incr/'.$id) }}");
+</script>
 </body>
 </html>
