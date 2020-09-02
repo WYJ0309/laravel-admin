@@ -12,6 +12,7 @@ use App\Models\ArticleModel;
 use Fukuball\Jieba\Finalseg;
 use Fukuball\Jieba\Jieba;
 use Fukuball\Jieba\JiebaAnalyse;
+use Illuminate\Support\Facades\DB;
 
 class ArticleController extends AdminController
 {
@@ -35,7 +36,8 @@ class ArticleController extends AdminController
         $responseArr = ['cateList'=>$cateList,'result'=>$info];
         return view('admin.article.article_edit',$responseArr);
     }
-    //文章保存
+
+        //文章保存
     public function articleSave(){
         ini_set('memory_limit', '600M');
         $params = request()->all();
@@ -54,9 +56,20 @@ class ArticleController extends AdminController
         ];
         if(empty($params['id'])){
             $content = FileController::removeHtml($params['content']);
-            $insertArr['article_keyword'] = implode(" ",array_keys(JiebaAnalyse::extractTags($content, 10)));
-            ArticleModel::query()->insert($insertArr);
+            $tagArr = array_keys(JiebaAnalyse::extractTags($content, 10));
+            $insertArr['article_keyword'] = implode(" ",$tagArr);
+            $insertArr['created_at'] = $insertArr['updated_at'] = date('Y-m-d H:i:s',time());
+            $id = ArticleModel::query()->insertGetId($insertArr);
+            $tagTmp = [];
+            foreach ($tagArr as $val){
+                $tmp = [];
+                $tmp['article_id'] = $id;
+                $tmp['tag'] = $val;
+                $tagTmp[] = $tmp;
+            }
+            DB::table('article_tags')->insert($tagTmp);
         }else{
+            $insertArr['updated_at'] = date('Y-m-d H:i:s',time());
             ArticleModel::query()->where('id','=',$params['id'])->update($insertArr);
         }
         return ['status'=>1,'code'=>200,'msg'=>'保存成功'];

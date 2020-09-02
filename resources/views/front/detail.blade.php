@@ -7,6 +7,9 @@
     <link href="{{ asset('front/css/index.css') }}" rel="stylesheet" type="text/css">
 </head>
 <body>
+<header>
+    @include('front.nav')
+</header>
 <article>
     <div class="infos">
         <div class="newsview">
@@ -17,42 +20,49 @@
         </div>
         <div class="share"> </div>
         <div class="nextinfo">
-            <p>上一篇：<a href="/news/life/2018-03-13/804.html">作为一个设计师,如果遭到质疑你是否能恪守自己的原则?</a></p>
-            <p>下一篇：<a href="/news/life/">返回列表</a></p>
+            @if( !empty($pre['article_title']) )
+                <p>上一篇：<a href="{{ url('/news/detail/'.$pre['id']) }}">{{ $pre['article_title'] }}</a></p>
+            @endif
+            @if( !empty($next['article_title']) )
+                <p>下一篇：<a href="{{ url('/news/detail/'.$next['id']) }}">{{ $next['article_title'] }}</a></p>
+            @endif
         </div>
+        @if( !empty($relative) )
         <div class="otherlink">
             <h2>相关文章</h2>
             <ul>
-                <li><a href="/download/div/2018-04-22/815.html" title="html5个人博客模板《黑色格调》">html5个人博客模板《黑色格调》</a></li>
-                <li><a href="/download/div/2018-04-18/814.html" title="html5个人博客模板主题《清雅》">html5个人博客模板主题《清雅》</a></li>
-                <li><a href="/download/div/2018-03-18/807.html" title="html5个人博客模板主题《绅士》">html5个人博客模板主题《绅士》</a></li>
+                @foreach( $relative as $val)
+                    <li><a href="{{ url('/news/detail/'.$val['id']) }}" title="{{ $val['article_title'] }}">{{ $val['article_title'] }}</a></li>
+                @endforeach
             </ul>
         </div>
-
+        @endif
     </div>
     <div class="sidebar">
+        @if( !empty($view_list) )
         <div class="paihang">
-            <h2 class="hometitle">点击排行</h2>
+            <h3 class="twinkle">点击排行</h3>
             <ul>
-                <li><b><a href="/download/div/2015-04-10/746.html" target="_blank">【活动作品】柠檬绿兔小白个人博客模板30...</a></b>
-                    <p><i><img src="images/t02.jpg"></i>展示的是首页html，博客页面布局格式简单，没有复杂的背景，色彩局部点缀，动态的幻灯片展示，切换卡，标...</p>
-                </li>
-                <li><b><a href="/download/div/2014-02-19/649.html" target="_blank"> 个人博客模板（2014草根寻梦）30...</a></b>
-                    <p><i><img src="images/b03.jpg"></i>2014第一版《草根寻梦》个人博客模板简单、优雅、稳重、大气、低调。专为年轻有志向却又低调的草根站长设...</p>
-                </li>
+                @foreach( $view_list as $val)
+                    <li><b><a href="{{ url('/news/detail/'.$val['id']) }}" target="_blank">{{ $val['article_title'] }}</a></b>
+                        <p><i><img src="{{ asset($val['thumb_url']) }}"></i>{{ substr_format($val['article_desc'],100,'...') }}</p>
+                    </li>
+                @endforeach
             </ul>
         </div>
+        @endif
+        @if( !empty($side_list) )
         <div class="paihang">
-            <h2 class="hometitle">站长推荐</h2>
+            <h3 class="twinkle">热推暖文</h3>
             <ul>
-                <li><b><a href="/download/div/2015-04-10/746.html" target="_blank">【活动作品】柠檬绿兔小白个人博客模板30...</a></b>
-                    <p><i><img src="images/t02.jpg"></i>展示的是首页html，博客页面布局格式简单，没有复杂的背景，色彩局部点缀，动态的幻灯片展示，切换卡，标...</p>
-                </li>
-                <li><b><a href="/download/div/2014-02-19/649.html" target="_blank"> 个人博客模板（2014草根寻梦）30...</a></b>
-                    <p><i><img src="images/b03.jpg"></i>2014第一版《草根寻梦》个人博客模板简单、优雅、稳重、大气、低调。专为年轻有志向却又低调的草根站长设...</p>
-                </li>
+                @foreach( $side_list as $val)
+                    <li><b><a href="{{ url('/news/detail/'.$val['id']) }}" target="_blank">{{ $val['article_title'] }}</a></b>
+                        <p><i><img src="{{ asset($val['thumb_url']) }}"></i>{{ substr_format($val['article_desc'],100,'...') }}</p>
+                    </li>
+                @endforeach
             </ul>
         </div>
+        @endif
     </div>
 </article>
 </body>
