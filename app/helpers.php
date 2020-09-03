@@ -76,7 +76,7 @@ function searchSon($pid_str,$new_prefix){
     if($sonObj->isNotEmpty()){
         foreach ($sonObj as $obj){
             DB::table('admin_depart')->where('part_id','=',$obj->part_id)->update(['part_pid_str'=>$new_prefix.'-'.$obj->part_pid]);
-            self::searchSon($obj->part_pid_str.'-'.$obj->part_id,$new_prefix.'-'.$obj->part_pid);
+            searchSon($obj->part_pid_str.'-'.$obj->part_id,$new_prefix.'-'.$obj->part_pid);
         }
     }else{
         return '';

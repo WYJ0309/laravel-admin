@@ -24,34 +24,16 @@ body{font-family:"微软雅黑",Arial;background-size:cover;-webkit-text-size-ad
 
 
 #nav-main{width: 960px;margin: 0 auto;overflow:hidden;}
-#nav-main #search{margin-top: 80px;width:960px;height:120px;}
-#nav-main #search #searchout{width:760px;height:80px;margin: 0 auto;padding-left: 100px;position: relative;}
-#nav-main #search #search_type{width:560px;height:20px;padding-left:90px;float:left;}
-#nav-main #search #searchform{width: 760px;height: 42px;margin: 10px auto 0;float: left;}
-#nav-main #search #searchform #search_input{width:520px;height:42px;float:left;padding-left:10px;border:transparent solid 1px;border-left: none;border-right: none;outline:0;background-color:rgba(253, 253, 253, 0.4);font-family:"微软雅黑";font-size:17px;color:#464646;position:relative;z-index:1;}
-#nav-main #search #searchform #searchbutton{width:40px;height:40px;float: left;border:transparent solid 1px;border-left: none;background-color:rgba(253, 253, 253, 0.4);background-image: url(../images/a.png);background-size: 70%;background-repeat: no-repeat;background-position: center;}
-#nav-main #search #searchform #searchbutton:hover{background-color:rgba(253, 253, 253, 0.6);}
-#nav-main #search #searchform #searchbutton:active{background-color:rgba(253, 253, 253, 0.4);}
-#nav-main #search .search_type .search_top_type{width:auto;height:20px;border-bottom:2px solid rgba(3, 247, 237, 0);font-size:15px;float:left;margin-right:40px;padding-bottom:3px;color:#F3F3F3;cursor: pointer;}
-#nav-main #search .search_type .search_top_type:hover{border-bottom:2px solid rgba(3, 247, 237, 1);color: #99CC00;}
+#nav-main  #searchform{width: 760px;height: 42px;margin: 10px auto 0;float: left;}
+#nav-main  #searchform #search_input{width:520px;height:42px;float:left;padding-left:10px;border:transparent solid 1px;border-left: none;border-right: none;outline:0;background-color:rgba(253, 253, 253, 0.4);font-family:"微软雅黑";font-size:17px;color:#464646;position:relative;z-index:1;}
+#nav-main  #searchform #searchbutton{width:40px;height:40px;float: left;border:transparent solid 1px;border-left: none;background-color:rgba(253, 253, 253, 0.4);background-image: url(../images/a.png);background-size: 70%;background-repeat: no-repeat;background-position: center;}
+#nav-main  #searchform #searchbutton:hover{background-color:rgba(253, 253, 253, 0.6);}
+#nav-main  #searchform #searchbutton:active{background-color:rgba(253, 253, 253, 0.4);}
 
-
-.product-all-header {height: 350px;}
-.product-all-header .header-content{max-width:1180px;margin:0 auto;padding-top:54px}
+.product-all-header .header-content{max-width:1200px;margin:0 auto;}
 .product-all-header .header-content h1{font-size:36px;color:#fff;line-height:50px;margin-bottom:10px;font-weight:normal}
 .product-all-header .header-content p{font-size:18px;color:#fff;line-height:24px;margin-bottom:20px;width:560px}
-.product-all-content{position:relative;max-width:1180px;margin:0 auto;}
-.product-all-content .nav{position:absolute;top:-150px;left:-60px;width:100%;}
-.product-all-content .nav.am-sticky{left: 0!important;width: 100%!important;}
-.product-all-content .nav .nav-content{width: 90%;margin: 0 auto;}
-.product-all-content .nav.am-sticky .nav-content{width: 1180px;margin: 0 auto;}
-.product-all-content .nav .nav-title{font-size:18px;color:#666a75;line-height:20px;margin-right:9px;display:block;float:left;margin-top:5px}
-.product-all-content .nav .nav-list{float:left;overflow:hidden;width:90%;font-size:0}
-.product-all-content .nav .nav-list li{float: left;}
-.product-all-content .nav .nav-list li a{display:inline-block;font-size:14px;color:#666a75;line-height:18px;padding:7px 8px;margin-right:10px;margin-bottom:10px;background:#fff;border:1px solid #ddd;border-radius:2px;cursor:pointer}
-.product-all-content .nav .nav-list li:last-of-type a{margin-bottom:0}
-.product-all-content .nav .nav-list li a.am-active{color:#f66f6a;border:1px solid #f66f6a;border-radius:2px}
-.product-all-content .nav .arrow{display:none}
+.product-all-content{position:relative;max-width:1200px;margin:0 auto;}
 .product-all-content .product-content{overflow:hidden;}
 .product-all-content .product-content .title{font-size:22px;color:#252b3a;letter-spacing:0;line-height:28px;position:relative;padding-left:12px;margin-bottom:20px;margin-top:30px}
 .product-all-content .product-content .title:before{background:#f66f6a;content:'';position:absolute;top:4px;left:0;width:2px;height:20px}

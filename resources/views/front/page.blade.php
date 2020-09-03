@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>公司所有</title>
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('front/css/index.css') }}" />
-</head>
+@component('front.component',['title'=>'网站标题','keyword'=>'关键词','description'=>'描述'])@endcomponent
 <body>
+<header>
+    @include('front.nav')
+</header>
 <div class="product-all-header">
     <div class="header-content">
         <h1>网站内容标签</h1>
@@ -15,18 +12,6 @@
     </div>
 </div>
 <div class="product-all-content">
-    <div class="nav">
-        <div class="nav-content">
-            <div class="nav-title">高频词汇：</div>
-            <ul class="nav-list">
-                <li><a href="#p1">计算</a></li>
-                <li><a href="#p2"> 存储</a></li>
-                <li><a href="#p3"> 网络</a></li>
-                <li><a href="#p4">数据库</a></li>
-                <li><a href="#p5"> 安全</a></li>
-            </ul>
-        </div>
-    </div>
     <div class="product-content" id="p1">
         <div class="title" id="title1">计算</div>
         <div class="tips-content">
@@ -550,7 +535,7 @@
 
         </div>
     </div>
-    <div style="height: 350px;"></div>
+
 </div>
 </body>
 </html>

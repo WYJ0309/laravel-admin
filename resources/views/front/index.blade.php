@@ -1,8 +1,5 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    @component('front.component',['title'=>'网站标题','keyword'=>'关键词','description'=>'描述'])@endcomponent
-</head>
+@component('front.component',['title'=>'网站标题','keyword'=>'关键词','description'=>'描述'])@endcomponent
 <body>
 <header>
     @include('front.nav')

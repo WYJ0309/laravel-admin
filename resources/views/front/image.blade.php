@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>很火爆的抖音女朋友相册代码-炫酷旋转相册</title>
-    <link rel="stylesheet" href="{{ asset('front/css/index.css') }}">
-</head>
+@component('front.component',['title'=>'网站标题','keyword'=>'关键词','description'=>'描述'])@endcomponent
 <body>
+<header>
+    @include('front.nav')
+</header>
 <div class="img_wrap">
     <div class="img_cube">
         <div class="out_front"><img src="{{ asset('front/images/1.jpg') }}" class="pic"></div>

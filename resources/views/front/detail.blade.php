@@ -1,8 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    @component('front.component',['title'=>$article_title,'keyword'=>$article_keyword,'description'=>$article_desc])@endcomponent
-    <script src="/admin/js/jquery-3.4.1.min.js"></script>
-</head>
+@component('front.component',['title'=>$article_title,'keyword'=>$article_keyword,'description'=>$article_desc])@endcomponent
+<script src="/admin/js/jquery-3.4.1.min.js"></script>
 <body>
 <header>
     @include('front.nav')
