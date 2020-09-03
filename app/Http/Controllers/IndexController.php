@@ -14,13 +14,16 @@ class IndexController extends Controller
     //-------------------------后台菜单展示---------------------------------
     //菜单列表--页面接口
     public function index(){
-        $artilceList = ArticleModel::query()->leftJoin('article_cate','article_cate.id','=','article.article_cate_id')->select(['article.*','article_cate.cate_name'])->get();
+        $artilceList = ArticleModel::query()->leftJoin('article_cate','article_cate.id','=','article.article_cate_id')->select(['article.*','article_cate.cate_name'])->limit(20)->get();
         return view('front.index',['result'=>$artilceList->toArray()]);
     }
     //
     public function newsList(){
-
-        return view('front.search',[]);
+        $objArr = DB::table('article_tags')->select(DB::raw('count(tag) as tag_num,tag'))->groupBy('tag')->orderBy('tag_num','DESC')->limit(5)->pluck('tag')->toArray();
+        $keyword = request()->get('search',implode(" ",$objArr));
+        $artilceList = ArticleModel::query()->leftJoin('article_tags','article_tags.article_id','=','article.id')
+            ->distinct('article.id')->whereIn('tag',explode(" ",$keyword))->select(['article.id','article_title','article_desc','created_at'])->limit(20)->get();
+        return view('front.search',['article_list'=>$artilceList]);
     }
     //年度热词展示
     public function page(){

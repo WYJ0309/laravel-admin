@@ -2,8 +2,8 @@
 *{margin: 0;padding: 0;font-family: "microsoft yahei";}
 
 a{text-decoration: none;color: #6F7479;}
-
-body{font-family:"微软雅黑",Arial;background-size:cover;-webkit-text-size-adjust:none;margin: 0px;line-height: 1.5;color: #6F7479;font-size: 14px;zoom: 1.1125;background-image: url('/front/images/13.png');}
+li{list-style: none;}
+body{font-family:"微软雅黑",Arial;margin: 0px;color: #6F7479;font-size: 14px;background-image: url('/front/images/13.png'); background-repeat:no-repeat;}
 
 
 #top_nav{width: 1200px;height: 70px;margin: auto auto;}
@@ -22,11 +22,10 @@ body{font-family:"微软雅黑",Arial;background-size:cover;-webkit-text-size-ad
 
 
 
-
 #nav-main{width: 960px;margin: 0 auto;overflow:hidden;}
 #nav-main  #searchform{width: 760px;height: 42px;margin: 10px auto 0;float: left;}
-#nav-main  #searchform #search_input{width:520px;height:42px;float:left;padding-left:10px;border:transparent solid 1px;border-left: none;border-right: none;outline:0;background-color:rgba(253, 253, 253, 0.4);font-family:"微软雅黑";font-size:17px;color:#464646;position:relative;z-index:1;}
-#nav-main  #searchform #searchbutton{width:40px;height:40px;float: left;border:transparent solid 1px;border-left: none;background-color:rgba(253, 253, 253, 0.4);background-image: url(../images/a.png);background-size: 70%;background-repeat: no-repeat;background-position: center;}
+#nav-main  #searchform #search_input{width:520px;height:42px;float:left;padding-left:10px;border:transparent solid 1px;}
+#nav-main  #searchform #searchbutton{width:40px;height:42px;float: left;border:transparent solid 1px;background-color:rgba(253, 253, 253, 0.4);background-image: url(../images/a.png);background-size: 70%;background-repeat: no-repeat;background-position: center;}
 #nav-main  #searchform #searchbutton:hover{background-color:rgba(253, 253, 253, 0.6);}
 #nav-main  #searchform #searchbutton:active{background-color:rgba(253, 253, 253, 0.4);}
 
@@ -80,18 +79,17 @@ body{font-family:"微软雅黑",Arial;background-size:cover;-webkit-text-size-ad
 .img_wrap .img_cube:hover .out_bottom {transform: rotateX(-90deg) translateZ(400px)}
 
 
-.newsList .title h2{position: relative; padding:20px 0; text-align: center; color:#666;}
-.newsList .title h2:after{width:50px; height: 2px; display: block; content: ""; background-color: #2FC1AC; margin-top: 20px; position: absolute; left: 50%; transform:translateX(-50%);}
+
 .newsList .row{font-size: 14px;line-height: 1.42857143;width:1170px;min-width:760px;padding-right: 15px;padding-left: 15px;margin-right: auto;margin-left: auto;}
-.newsList li a:hover h3{color: #2FC1AC;}
-.newsList li{padding:20px; border-bottom: 1px dashed #CCC;box-sizing:border-box;webkit-box-sizing:border-box;moz-box-sizing:border-box;}
-.newsList li:last-child{border: none;}
-.newsTime {width:80px; float: left; padding-left: 10px;}
-.newsTime p{font-size: 28px; color: #555;}
-.newsTime span{line-height: 30px; color: #777;}
-.newsTitle{margin-left: 100px; padding-right: 10px;}
-.newsTitle h3{color: #666; font-size: 20px; margin-top:5px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;}
-.newsTitle p{line-height: 1.8; font-size: 15px; color: #888;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+.newsList .row li a:hover h3{color: #2FC1AC;}
+.newsList .row li{padding:20px; border-bottom: 1px dashed #CCC;box-sizing:border-box;webkit-box-sizing:border-box;moz-box-sizing:border-box;}
+.newsList .row li:last-child{border: none;}
+.newsList .row li .newsTime {width:80px; float: left; padding-left: 10px;}
+.newsList .row li .newsTime p{font-size: 28px; color: #555;}
+.newsList .row li .newsTime span{line-height: 30px; color: #777;}
+.newsList .row li .newsTitle{margin-left: 100px; padding-right: 10px;}
+.newsList .row li .newsTitle h3{color: #666; font-size: 20px; margin-top:5px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;}
+.newsList .row li .newsTitle p{line-height: 1.8; font-size: 15px; color: #888;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
 
 article { width: 1200px; margin: auto;overflow: hidden }
 article .blogs { float: left; width: 70%; overflow: hidden; }
