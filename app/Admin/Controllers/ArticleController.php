@@ -37,7 +37,7 @@ class ArticleController extends AdminController
         return view('admin.article.article_edit',$responseArr);
     }
 
-        //文章保存
+    //文章保存
     public function articleSave(){
         ini_set('memory_limit', '600M');
         $params = request()->all();
@@ -56,7 +56,7 @@ class ArticleController extends AdminController
         ];
         if(empty($params['id'])){
             $content = FileController::removeHtml($params['content']);
-            $tagArr = array_keys(JiebaAnalyse::extractTags($content, 10));
+            $tagArr = array_keys(returnWords($content,10));
             $insertArr['article_keyword'] = implode(" ",$tagArr);
             $insertArr['created_at'] = $insertArr['updated_at'] = date('Y-m-d H:i:s',time());
             $id = ArticleModel::query()->insertGetId($insertArr);

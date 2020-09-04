@@ -18,37 +18,12 @@ body{font-family:"微软雅黑",Arial;margin: 0px;color: #6F7479;font-size: 14px
 .nav_list>li:hover {background-color: #fff;height: auto}
 
 
-
-
-
-
 #nav-main{width: 960px;margin: 0 auto;overflow:hidden;}
 #nav-main  #searchform{width: 760px;height: 42px;margin: 10px auto 0;float: left;}
 #nav-main  #searchform #search_input{width:520px;height:42px;float:left;padding-left:10px;border:transparent solid 1px;}
 #nav-main  #searchform #searchbutton{width:40px;height:42px;float: left;border:transparent solid 1px;background-color:rgba(253, 253, 253, 0.4);background-image: url(../images/a.png);background-size: 70%;background-repeat: no-repeat;background-position: center;}
 #nav-main  #searchform #searchbutton:hover{background-color:rgba(253, 253, 253, 0.6);}
 #nav-main  #searchform #searchbutton:active{background-color:rgba(253, 253, 253, 0.4);}
-
-.product-all-header .header-content{max-width:1200px;margin:0 auto;}
-.product-all-header .header-content h1{font-size:36px;color:#fff;line-height:50px;margin-bottom:10px;font-weight:normal}
-.product-all-header .header-content p{font-size:18px;color:#fff;line-height:24px;margin-bottom:20px;width:560px}
-.product-all-content{position:relative;max-width:1200px;margin:0 auto;}
-.product-all-content .product-content{overflow:hidden;}
-.product-all-content .product-content .title{font-size:22px;color:#252b3a;letter-spacing:0;line-height:28px;position:relative;padding-left:12px;margin-bottom:20px;margin-top:30px}
-.product-all-content .product-content .title:before{background:#f66f6a;content:'';position:absolute;top:4px;left:0;width:2px;height:20px}
-.product-all-content .product-content .tips{float:left;position:relative;padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:10px;margin-left:50px;}
-.product-all-content .product-content .tips.col-sm-4 {width: 27%;}
-.product-all-content .product-content .tips:nth-of-type(3n){padding-right:0}
-.product-all-content .product-content .tips:nth-of-type(3n - 2){padding-left:0}
-.product-all-content .product-content .tips:nth-of-type(-n+1){padding-bottom:0}
-.product-all-content .product-content .tips a{display:block;padding:30px 30px 30px 98px;background:#fff;border-radius:2px;border:1px solid #ddd}
-.product-all-content .product-content .tips a:hover{box-shadow:0 10px 40px 0 rgba(0,0,0,0.1)}
-.product-all-content .product-content .tips a:hover .tips-title{color:#f66f6a}
-.product-all-content .product-content .tips a:hover .icons-product-md{color:#f66f6a}
-.product-all-content .product-content .tips .inco{position:absolute;top:38px;left:32px}
-.product-all-content .product-content .tips .tips-title{font-size:18px;color:#252b3a;letter-spacing:0;line-height:22px;margin-bottom:10px}
-.product-all-content .product-content .tips .tips-info{font-size:14px;color:#a0a2a8;letter-spacing:0;word-break:break-all;text-align:justify;line-height:22px;height:88px;overflow:hidden;text-overflow:ellipsis;}
-
 
 .img_wrap {width: 10px;height: 10px;margin: 200px 400px;position: relative}
 .img_wrap .img_cube {width: 600px;height: 400px;margin: 300px auto;transform-style: preserve-3d;transform: rotateX(-30deg) rotateY(-80deg);-webkit-animation: rotate 20s infinite;animation-timing-function: linear}

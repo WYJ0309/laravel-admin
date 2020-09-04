@@ -1,5 +1,9 @@
 <?php
 
+use Fukuball\Jieba\Finalseg;
+use Fukuball\Jieba\Jieba;
+use Fukuball\Jieba\JiebaAnalyse;
+
 function substr_format($text, $length, $replace='..', $encoding='UTF-8')
 {
     if ($text && mb_strlen($text, $encoding) > $length) {
@@ -81,4 +85,17 @@ function searchSon($pid_str,$new_prefix){
     }else{
         return '';
     }
+}
+
+function returnWords($content,$num=0){
+    ini_set('memory_limit', '600M');
+    Jieba::init();
+    Finalseg::init();
+    JiebaAnalyse::init();
+    if(empty($num)){
+        $wordArr = JiebaAnalyse::extractTags($content);
+    }else{
+        $wordArr = JiebaAnalyse::extractTags($content, $num);
+    }
+    return $wordArr;
 }
