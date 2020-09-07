@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('fetch/hot', 'IndexController@fetchBaidu');
+Route::get('hot/fenci', 'IndexController@participle');
 
 
 
@@ -13,6 +14,9 @@ Route::get('page','IndexController@page');
 Route::get('image','IndexController@image');
 Route::get('news/detail/{id}', 'IndexController@detail');
 Route::get('news/incr/{id}', 'IndexController@viewIncr');
+Route::get('poetry','IndexController@poetryList');
+Route::get('lyric/{id}','IndexController@lyric');
+
 
 
 Route::post('file/store', 'FileController@store');//文件上传

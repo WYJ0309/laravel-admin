@@ -100,6 +100,32 @@ class IndexController extends Controller
         return ['status'=>1,'code'=>200,'msg'=>'保存成功'];
     }
 
+    //诗文列表
+    public function poetryList(){
+
+        return view('front.lyric',[]);
+    }
+    //诗文详情
+    public function lyric($id){
+        $article = ArticleModel::query()->where(['article.id'=>$id])->leftJoin('article_cate','article_cate.id','=','article.article_cate_id')->select(['article.*','article_cate.cate_name'])->first();
+        $pre = ArticleModel::query()->where('id','<',$id)->select(['id','article_title'])->first();
+        $next = ArticleModel::query()->where('id','>',$id)->select(['id','article_title'])->first();
+        $tagArr = explode(' ',$article['article_keyword']);
+        $tagObj = DB::table('article_tags')->whereIn('tag',$tagArr)->get();
+        if($tagObj->isEmpty()){
+            $article['relative'] = [];
+        }else{
+            $idArr = array_column($tagObj->toArray(),'article_id');
+            $idArr = array_unique($idArr);
+            $article['relative'] = ArticleModel::query()->whereIn('id',$idArr)->select(['id','article_title'])->limit(9)->get();
+        }
+
+        $viewList = ArticleModel::query()->orderBy('view_num','DESC')->limit(7)->select(['id','article_title','article_desc','thumb_url'])->get();
+        $article['view_list'] = $viewList->isEmpty()?[]:$viewList->toArray();
+        $article['pre'] = empty($pre)?[]:$pre;
+        $article['next'] = empty($next)?[]:$next;
+        return view('front.lyric',$article);
+    }
     //每天获取百度热搜一次
     public function fetchBaidu()
     {
@@ -131,7 +157,7 @@ class IndexController extends Controller
         DB::table('hot_rank')->where(['date'=>date('Ymd',time())])->chunkById(20,function ($list){
             $tag_arr = [];
             foreach($list as $val){
-                $tagArr = returnWords($val->title);
+                $tagArr = returnWords($val->title);echo '0';
                 foreach(array_keys($tagArr) as $tag){
                     $tmp_tag = [];
                     $tmp_tag['hot_id'] = $val->id;
