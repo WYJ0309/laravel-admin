@@ -157,7 +157,7 @@ class IndexController extends Controller
         DB::table('hot_rank')->where(['date'=>date('Ymd',time())])->chunkById(20,function ($list){
             $tag_arr = [];
             foreach($list as $val){
-                $tagArr = returnWords($val->title);echo '0';
+                $tagArr = returnWords($val->title);print_r($tagArr);
                 foreach(array_keys($tagArr) as $tag){
                     $tmp_tag = [];
                     $tmp_tag['hot_id'] = $val->id;
